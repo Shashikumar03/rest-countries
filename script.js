@@ -5,12 +5,12 @@ async function fetchingApi(api) {
     return jsonObject;
   } catch (error) {}
 }
-
 fetchingApi("https://restcountries.com/v3.1/all")
   .then((countries) => takeEssentialData(countries))
   .then((countryWiseInformations) =>
     displayCountryDetails(countryWiseInformations)
   )
+  .then((container) => console.log(container))
   .catch((error) => console.error(error));
 
 function takeEssentialData(countries) {
@@ -47,66 +47,97 @@ function takeEssentialData(countries) {
   });
 }
 function displayCountryDetails(countryWiseInformations) {
-  // console.log(countryWiseInformations);
-  Object.keys(countryWiseInformations).forEach((countryName) => {
-    const { population, region, capital, flags } =
-      countryWiseInformations[countryName];
+  return new Promise((resolve, reject) => {
+    // Check if there is no country information
+    if (Object.keys(countryWiseInformations).length === 0) {
+      reject("No country information available.");
+      return;
+    }
 
-    const countryDiv = document.createElement("div");
-    countryDiv.className = "country";
-    const imgTag = document.createElement("img");
-    const countryInformationTextDiv = document.createElement("div");
+    Object.keys(countryWiseInformations).forEach((countryName) => {
+      const { population, region, capital, flags } =
+        countryWiseInformations[countryName];
 
-    countryInformationTextDiv.className = "country-detail-text";
-    //image dalna hai
-    imgTag.src = `${flags}`;
-    countryDiv.appendChild(imgTag);
-    //  country ka name dalna hai
-    const countryDetailNameDiv = document.createElement("div");
-    countryDetailNameDiv.className = "country-name";
-    const h2Tag = document.createElement("h2");
-    h2Tag.appendChild(document.createTextNode(countryName));
-    countryDetailNameDiv.append(h2Tag);
-    countryInformationTextDiv.append(countryDetailNameDiv);
+      const countryDiv = document.createElement("div");
+      countryDiv.className = "country";
+      const imgTag = document.createElement("img");
+      const countryInformationTextDiv = document.createElement("div");
 
-    const countryAllDetailsTextDiv = document.createElement("div"); //dalna hai pop,region and capiptal;
-    countryAllDetailsTextDiv.className = "country-left-details";
-    //population dalna hai
-    const populationPTag = document.createElement("p");
-    const populationSpan = document.createElement("span");
-    populationSpan.className = "details";
-    populationSpan.appendChild(document.createTextNode("Population:"));
-    populationPTag.append(populationSpan);
-    populationPTag.appendChild(document.createTextNode(` ${population}`));
-    countryAllDetailsTextDiv.appendChild(populationPTag);
-    // region dalna hai
-    const regionPTag = document.createElement("p");
-    const regionSpan = document.createElement("span");
-    regionSpan.className = "details";
-    regionSpan.appendChild(document.createTextNode("Region:"));
-    regionPTag.append(regionSpan);
-    const regionText = document.createTextNode(` ${region}`);
-    regionPTag.appendChild(regionText);
-    countryAllDetailsTextDiv.appendChild(regionPTag);
+      countryInformationTextDiv.className = "country-detail-text";
+      //image dalna hai
+      imgTag.src = `${flags}`;
+      countryDiv.appendChild(imgTag);
+      //  country ka name dalna hai
+      const countryDetailNameDiv = document.createElement("div");
+      countryDetailNameDiv.className = "country-name";
+      const h2Tag = document.createElement("h2");
+      h2Tag.appendChild(document.createTextNode(countryName));
+      countryDetailNameDiv.append(h2Tag);
+      countryInformationTextDiv.append(countryDetailNameDiv);
 
-    //capital
-    const capitalPTag = document.createElement("p");
-    const capitalSpan = document.createElement("span");
-    capitalSpan.className = "details";
-    capitalSpan.appendChild(document.createTextNode("Capital:"));
-    capitalPTag.append(capitalSpan);
-    const capitalText = document.createTextNode(` ${capital}`);
-    capitalPTag.appendChild(capitalText);
-    countryAllDetailsTextDiv.appendChild(capitalPTag);
+      const countryAllDetailsTextDiv = document.createElement("div"); //dalna hai pop,region and capiptal;
+      countryAllDetailsTextDiv.className = "country-left-details";
+      //population dalna hai
+      const populationPTag = document.createElement("p");
+      const populationSpan = document.createElement("span");
+      populationSpan.className = "details";
+      populationSpan.appendChild(document.createTextNode("Population:"));
+      populationPTag.append(populationSpan);
+      populationPTag.appendChild(document.createTextNode(` ${population}`));
+      countryAllDetailsTextDiv.appendChild(populationPTag);
+      // region dalna hai
+      const regionPTag = document.createElement("p");
+      const regionSpan = document.createElement("span");
+      regionSpan.className = "details";
+      regionSpan.appendChild(document.createTextNode("Region:"));
+      regionPTag.append(regionSpan);
+      const regionText = document.createTextNode(` ${region}`);
+      regionPTag.appendChild(regionText);
+      countryAllDetailsTextDiv.appendChild(regionPTag);
 
-    //  information div me dalna hai
-    countryInformationTextDiv.append(countryAllDetailsTextDiv);
-    countryDiv.appendChild(countryInformationTextDiv);
-    // html me dal do
-    const container = document.getElementById("firstDiv");
-    container.appendChild(countryDiv);
+      //capital
+      const capitalPTag = document.createElement("p");
+      const capitalSpan = document.createElement("span");
+      capitalSpan.className = "details";
+      capitalSpan.appendChild(document.createTextNode("Capital:"));
+      capitalPTag.append(capitalSpan);
+      const capitalText = document.createTextNode(` ${capital}`);
+      capitalPTag.appendChild(capitalText);
+      countryAllDetailsTextDiv.appendChild(capitalPTag);
 
-    console.log(container);
+      //  information div me dalna hai
+      countryInformationTextDiv.append(countryAllDetailsTextDiv);
+      countryDiv.appendChild(countryInformationTextDiv);
+      // html me dal do
+      const container = document.getElementById("firstDiv");
+      container.appendChild(countryDiv);
+      resolve(container);
+    });
   });
 }
+const searching = document.getElementById("search");
 
+searching.addEventListener("keyup", searchByCountryName);
+
+function searchByCountryName(e) {
+  e.preventDefault();
+  const countryName = e.target.value.trim().toLowerCase();
+  console.log(countryName);
+  const listOfCountryDetails = document.getElementsByClassName("country-name");
+
+  const countryNameList = Array.from(listOfCountryDetails).map((li) => {
+    return li.innerText.toLowerCase();
+  });
+  if (countryNameList.includes(countryName)) {
+    const a = document.getElementsByClassName("country");
+    Array.from(a).forEach((item) => {
+      if (item.innerText.toLowerCase().includes(countryName)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  } else {
+    const a = document.getElementsByClassName("country");
+  }
+}
