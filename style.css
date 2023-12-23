@@ -1,0 +1,103 @@
+root {
+  --dark-blue: hsl(209, 23%, 22%);
+  --very-dark-blue: hsl(207, 26%, 17%);
+  --very-dark-blue-light-mode: hsl(200, 15%, 8%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-light-gray: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Nunito Sans", sans-serif;
+  /* background-color: aqua; */
+}
+html {
+  font-size: 87.5%;
+}
+.header-navbar {
+  /* border: 2px solid rgb(49, 40, 40); */
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+}
+.header-container {
+  display: flex;
+  width: 100%;
+  /* border: 2px solid red; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  /* margin-left: 2rem; */
+}
+.search,
+.header-container,
+.dropdown {
+  /* border: 2px solid red; */
+  margin-inline-end: 1.5rem;
+  margin-inline-start: 1.5rem;
+}
+.search-and-filter {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.search > input {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+.dropdown > button,
+.dropdown-menu > li {
+  font-size: 1.4rem;
+  /* width: 80; */
+}
+.dropdown {
+  /* border: 2px solid red; */
+  width: 70%;
+}
+.dropdown > button {
+  width: 80%;
+}
+.dropdown > .dropdown-menu {
+  /* border: 2px solid red; */
+  width: 80%;
+}
+.container {
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-blue);
+  margin-top: 2.5rem;
+}
+.country {
+  /* border: 2px solid black; */
+  margin: 1rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.country-detail-text {
+  /* border: 2px solid green; */
+  margin-top: 2rem;
+  padding-left: 2rem;
+}
+.country-name {
+  /* border: 2px solid black; */
+  margin-bottom: 2rem;
+}
+.country-left-details {
+  /* border: 2px solid red; */
+}
+.country-left-details > p {
+  font-size: 1.3rem;
+}
+.details {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
