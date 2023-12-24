@@ -146,6 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const selectedValue = item.getAttribute("value");
       const countryList = document.getElementsByClassName("country");
+      const selectButton = document.getElementById("fl");
+      if (selectedValue === "none") {
+        selectButton.textContent = `Filter by Region`;
+      } else {
+        selectButton.textContent = `Region: ${selectedValue}`;
+      }
+
       Array.from(countryList).forEach((country) => {
         const allCountriesRegion =
           country.children[1].children[1].children[1].textContent.split(
