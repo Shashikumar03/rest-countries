@@ -115,29 +115,50 @@ function displayCountryDetails(countryWiseInformations) {
     });
   });
 }
-const searching = document.getElementById("search");
 
-searching.addEventListener("keyup", searchByCountryName);
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("search");
 
-function searchByCountryName(e) {
-  e.preventDefault();
-  const countryName = e.target.value.trim().toLowerCase();
-  console.log(countryName);
-  const listOfCountryDetails = document.getElementsByClassName("country-name");
+  searchInput.addEventListener("input", searchByCountryName);
 
-  const countryNameList = Array.from(listOfCountryDetails).map((li) => {
-    return li.innerText.toLowerCase();
-  });
-  if (countryNameList.includes(countryName)) {
-    const a = document.getElementsByClassName("country");
-    Array.from(a).forEach((item) => {
-      if (item.innerText.toLowerCase().includes(countryName)) {
-        item.style.display = "block";
+  function searchByCountryName(e) {
+    e.preventDefault();
+    const countryName = e.target.value.trim().toLowerCase();
+    const countryList = document.getElementsByClassName("country");
+    Array.from(countryList).forEach((country) => {
+      const nameOfAllCountry =
+        country.children[1].children[0].children[0].textContent.toLowerCase();
+      if (nameOfAllCountry.indexOf(countryName) != -1) {
+        country.style.display = "block";
       } else {
-        item.style.display = "none";
+        country.style.display = "none";
       }
     });
-  } else {
-    const a = document.getElementsByClassName("country");
   }
-}
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const dropDownItems = document.querySelectorAll(".dropdown-item");
+  dropDownItems.forEach((item) => {
+    item.addEventListener("click", filteringByRegion);
+
+    function filteringByRegion(e) {
+      e.preventDefault();
+      const selectedValue = item.getAttribute("value");
+      const countryList = document.getElementsByClassName("country");
+      Array.from(countryList).forEach((country) => {
+        const allCountriesRegion =
+          country.children[1].children[1].children[1].textContent.split(
+            ": "
+          )[1];
+        if (allCountriesRegion.indexOf(selectedValue) != -1) {
+          country.style.display = "block";
+        } else if (selectedValue === "none") {
+          country.style.display = "block";
+        } else {
+          country.style.display = "none";
+        }
+      });
+    }
+  });
+});
