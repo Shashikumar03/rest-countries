@@ -134,6 +134,7 @@ html {
   margin: 1rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .country-detail-text {
   /* border: 2px solid green; */
