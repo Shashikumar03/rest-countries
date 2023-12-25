@@ -145,22 +145,18 @@ html {
   /* border: 2px solid black; */
   margin-bottom: 2rem;
 }
-.country-left-details {
-  /* border: 2px solid red; */
-}
+
 .country-left-details > p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .details {
+  /* border: 2px solid red; */
   font-size: 1.2rem;
   font-weight: bold;
 }
 
 /* mobile view */
 @media only screen and (min-width: 768px) {
-  html {
-    /* font-size: 106.25%; */
-  }
   .header-navbar {
     /* border: 2px solid rgb(49, 40, 40); */
     height: 6rem;
@@ -290,7 +286,7 @@ html {
     /* max-width: 23%; */
     margin: 0;
     width: 20rem;
-    height: 35rem;
+    height: 32.5rem;
     gap: 0;
     padding: 0;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -298,16 +294,19 @@ html {
   }
   .country-detail-text {
     /* border: 2px solid green; */
-    margin-top: 2rem;
+    margin-top: 1.8rem;
     padding-left: 2rem;
   }
   .country-name {
     /* border: 2px solid black; */
-    margin-bottom: 2rem;
+    margin-bottom: 1.1rem;
+  }
+  .country-name > h2 {
+    font-size: 1.6rem;
   }
 
   .country-left-details > p {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .details {
     font-size: 1.2rem;

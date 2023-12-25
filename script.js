@@ -16,7 +16,6 @@ fetchingApi("https://restcountries.com/v3.1/all")
 function takeEssentialData(countries) {
   return new Promise((resolve, reject) => {
     const countryWiseInformations = countries.reduce((accumulator, country) => {
-      // accumulator.push(country.name.common);
       accumulator[country.name.common] = {};
       accumulator[country.name.common]["population"] = country.population;
       accumulator[country.name.common]["region"] = country.region;
@@ -60,14 +59,15 @@ function displayCountryDetails(countryWiseInformations) {
 
       const countryDiv = document.createElement("div");
       countryDiv.className = "country";
+      countryDiv.id = countryName;
       const imgTag = document.createElement("img");
       const countryInformationTextDiv = document.createElement("div");
 
       countryInformationTextDiv.className = "country-detail-text";
-      //image dalna hai
+      //image
       imgTag.src = `${flags}`;
       countryDiv.appendChild(imgTag);
-      //  country ka name dalna hai
+      //  country name
       const countryDetailNameDiv = document.createElement("div");
       countryDetailNameDiv.className = "country-name";
       const h2Tag = document.createElement("h2");
@@ -77,7 +77,7 @@ function displayCountryDetails(countryWiseInformations) {
 
       const countryAllDetailsTextDiv = document.createElement("div"); //dalna hai pop,region and capiptal;
       countryAllDetailsTextDiv.className = "country-left-details";
-      //population dalna hai
+      //population
       const populationPTag = document.createElement("p");
       const populationSpan = document.createElement("span");
       populationSpan.className = "details";
@@ -85,7 +85,7 @@ function displayCountryDetails(countryWiseInformations) {
       populationPTag.append(populationSpan);
       populationPTag.appendChild(document.createTextNode(` ${population}`));
       countryAllDetailsTextDiv.appendChild(populationPTag);
-      // region dalna hai
+      // region
       const regionPTag = document.createElement("p");
       const regionSpan = document.createElement("span");
       regionSpan.className = "details";
@@ -105,10 +105,10 @@ function displayCountryDetails(countryWiseInformations) {
       capitalPTag.appendChild(capitalText);
       countryAllDetailsTextDiv.appendChild(capitalPTag);
 
-      //  information div me dalna hai
+      //  information div
       countryInformationTextDiv.append(countryAllDetailsTextDiv);
       countryDiv.appendChild(countryInformationTextDiv);
-      // html me dal do
+      // append to their parent
       const container = document.getElementById("firstDiv");
       container.appendChild(countryDiv);
       resolve(container);
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const selectedValue = item.getAttribute("value");
       const countryList = document.getElementsByClassName("country");
-      const selectButton = document.getElementById("fl");
+      const selectButton = document.getElementById("filter");
       if (selectedValue === "none") {
         selectButton.textContent = `Filter by Region`;
       } else {
@@ -169,3 +169,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function a() {
+  setTimeout(() => {
+    const a = document.querySelectorAll(".country");
+    console.log(a);
+  }, 5000);
+}
+
+a();
