@@ -37,6 +37,15 @@ html {
   /* align-items: center; */
   /* margin-left: 2rem; */
 }
+.header-container > p {
+  /* border: 2px solid red; */
+  font-size: 1rem;
+  font-weight: bold;
+}
+.moon {
+  /* border: 2px solid red; */
+  padding-right: 0.5rem;
+}
 
 .header-container,
 .dropdown {
@@ -124,6 +133,7 @@ html {
   /* border: 2px solid black; */
   margin: 1rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding-bottom: 2rem;
 }
 .country-detail-text {
   /* border: 2px solid green; */
@@ -170,6 +180,15 @@ html {
     /* margin-left: 2rem; */
   }
 
+  .header-container > p {
+    /* border: 2px solid red; */
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .moon {
+    /* border: 2px solid red; */
+    padding-right: 0.9rem;
+  }
   .search-and-filter {
     width: 100%;
     /* border: 2px solid red; */
@@ -198,7 +217,7 @@ html {
     color: gray;
   }
   #search {
-    border-radius: 2px solid rgb(0, 26, 255);
+    /* border-radius: 2px solid rgb(0, 26, 255); */
     border-radius: 0;
     border-left: none;
     border-top-right-radius: 5px;
@@ -207,7 +226,7 @@ html {
   }
 
   .search {
-    border: 2px solid rgb(120, 22, 29);
+    /* border: 2px solid rgb(120, 22, 29); */
     margin-inline-end: 0rem;
     margin-inline-start: 0rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -224,7 +243,7 @@ html {
     /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
   }
   #dropdown {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: auto;
   }
 
@@ -244,7 +263,7 @@ html {
     /* width: 80; */
   }
   .dropdown > .dropdown-menu {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 100%;
   }
   .countries-section1 {
