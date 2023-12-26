@@ -150,12 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const selectedValue = item.getAttribute("value");
       const countryList = document.getElementsByClassName("country");
       const selectButton = document.getElementById("filter");
-      if (selectedValue === "none") {
-        return; 
-      } else {
-        selectButton.textContent = `Region: ${selectedValue}`;
-      }
-
+      const spanTag = selectButton.children[0];
+      selectButton.textContent = `Region: ${selectedValue}`;
+      selectButton.appendChild(spanTag);
       Array.from(countryList).forEach((country) => {
         const allCountriesRegion =
           country.children[1].children[1].children[1].textContent.split(
