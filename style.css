@@ -61,7 +61,7 @@ html {
   flex-direction: column;
   gap: 3rem;
 }
-.search_icon {
+.search-icon {
   align-self: center;
   border-style: solid;
   border-width: 1px;
@@ -107,6 +107,7 @@ html {
   /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 .dropdown > button {
+  /* border: 2px solid red; */
   width: 100%;
   border: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -115,7 +116,7 @@ html {
   text-align: start;
 }
 .dropdown > .dropdown-menu {
-  /* border: 2px solid red; */
+  /* border: 2px borsolid red; */
   width: 100%;
 }
 
@@ -193,7 +194,7 @@ html {
     flex-direction: row;
     justify-content: space-between;
   }
-  .search_icon {
+  .search-icon {
     align-self: center;
     border-style: solid;
     border-width: 1px;

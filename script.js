@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const countryList = document.getElementsByClassName("country");
       const selectButton = document.getElementById("filter");
       if (selectedValue === "none") {
-        selectButton.textContent = `Filter by Region`;
+        return; 
       } else {
         selectButton.textContent = `Region: ${selectedValue}`;
       }
