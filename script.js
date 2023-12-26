@@ -10,7 +10,9 @@ fetchingApi("https://restcountries.com/v3.1/all")
   .then((countryWiseInformations) =>
     displayCountryDetails(countryWiseInformations)
   )
-  .then((container) => console.log(container))
+  .then((details) => {
+    console.log(details);
+  })
   .catch((error) => console.error(error));
 
 function takeEssentialData(countries) {
@@ -111,6 +113,7 @@ function displayCountryDetails(countryWiseInformations) {
       // append to their parent
       const container = document.getElementById("firstDiv");
       container.appendChild(countryDiv);
+
       resolve(container);
     });
   });
@@ -170,11 +173,40 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function a() {
-  setTimeout(() => {
-    const a = document.querySelectorAll(".country");
-    console.log(a);
-  }, 5000);
-}
+// function detailView(allDetailOfCountry) {
+//   const allCountryDiv = document.querySelectorAll(".country");
+//   Array.from(allCountryDiv).forEach((countryDetail) => {
+//     countryDetail.addEventListener("click", viewDetailsOfCountry);
+//   });
+//   function viewDetailsOfCountry(event) {
+//     // Hide details for all countries
+//     Array.from(allCountryDiv).forEach((country) => {
+//       const clickedCountry =
+//         event.currentTarget.children[1].children[0].children[0].innerText;
+//       country.className = "view-details";
+//       if (
+//         country.id.toLowerCase().indexOf(clickedCountry.toLowerCase()) != -1
+//       ) {
+//         // const languagePTag = document.createElement("p");
+//         const subregionPTag = document.createElement("p");
+//         // const currencyPTag = document.createElement("p");
 
-a();
+//         const subregionSpanTag = document.createElement("span");
+//         subregionSpanTag.appendChild(document.createTextNode("Subregion: "));
+//         subregionPTag.append(subregionSpanTag);
+//         const subregionText = document.createTextNode(
+//           allDetailOfCountry[clickedCountry].subregion
+//         );
+
+//         subregionPTag.appendChild(subregionText);
+
+//         const a = document.querySelector(".country-left-details");
+//         a.appendChild(subregionPTag);
+
+//         country.style.display = "block";
+//       } else {
+//         country.style.display = "none";
+//       }
+//     });
+//   }
+// }
